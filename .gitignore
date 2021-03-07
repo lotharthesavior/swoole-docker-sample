@@ -1,0 +1,5 @@
+.phpintel
+output/*
+.env
+http-server-pid
+supervisord.log

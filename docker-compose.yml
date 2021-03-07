@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+
+  php:
+    build:
+      context: ./docker/swoole
+    container_name: ${DOCKER_APP}-php
+    volumes:
+      - './:/var/www/html'
+    expose:
+      - 80
+    networks:
+      my-new-app-network:
+        ipv4_address: ${DOCKER_APP_IP}.0.2
+
+networks:
+  my-new-app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${DOCKER_APP_IP}.0.0/16
+          gateway: ${DOCKER_APP_IP}.0.1
