@@ -23,6 +23,10 @@ $server->on("start", function (Server $server) {
 $server->on("request", function (Request $request, Response $response) {
     echo "Incoming connection time: " . date('Y-m-d H:i:s') . "\n";
     echo "Incoming connection uri: " . $request->server['request_uri'] . "\n";
+
+    xdebug_enable(); // <-- Essential function to debug.
+    xdebug_break(); // <-- Essential function to debug.
+
     $response->header("Content-Type", "text/plain");
     $response->end("Server response content.");
 });

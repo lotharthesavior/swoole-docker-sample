@@ -10,6 +10,7 @@ services:
       - './:/var/www/html'
     expose:
       - 80
+      - 9000
     networks:
       my-new-app-network:
         ipv4_address: ${DOCKER_APP_IP}.0.2

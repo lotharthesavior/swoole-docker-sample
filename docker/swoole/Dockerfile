@@ -1,9 +1,10 @@
-FROM php:7.4.2-cli
+FROM php:7.4-cli
 
 COPY ./rootfilesystem/ /
 
 RUN apt-get update && apt-get install vim -y && \
     apt-get install openssl -y && \
+    apt-get install zip -y && \
     apt-get install libssl-dev -y && \
     apt-get install wget -y && \
     apt-get install git -y && \
@@ -25,6 +26,14 @@ RUN cd /tmp && git clone https://github.com/swoole/swoole-src.git && \
 
 RUN touch /usr/local/etc/php/conf.d/swoole.ini && \
     echo 'extension=swoole.so' > /usr/local/etc/php/conf.d/swoole.ini
+
+# install sdebug
+RUN cd /tmp && git clone https://github.com/swoole/sdebug.git && \
+    cd sdebug && \
+    git checkout sdebug_2_9 && \
+    phpize && \
+    ./configure --enable-xdebug && \
+    make clean && make && make install
 
 # Here goes your git configurations
 # RUN git config --global user.email "" \
