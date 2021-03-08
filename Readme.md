@@ -44,4 +44,4 @@ docker-compose build
 
 
 
-**sdebug**: Here you'll find the case where you have everything that you have with the simple case, but with SDebug on.
+**sdebug**: Here you'll find the case where you have everything that you have with the simple case, but with [SDebug](https://github.com/swoole/sdebug) on.
