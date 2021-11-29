@@ -13,11 +13,11 @@ if (file_exists(PID_FILE)) {
     exit;
 }
 
-$server = new Server("0.0.0.0", 80, SWOOLE_PROCESS);
+$server = new Server("0.0.0.0", 9503, SWOOLE_PROCESS);
 
 $server->on("start", function (Server $server) {
     file_put_contents(PID_FILE, $server->master_pid);
-    echo "HTTP server available at http://127.0.0.1:80 (PID " . $server->master_pid . ")\n";
+    echo "HTTP server available at http://127.0.0.1:9503 (PID " . $server->master_pid . ")\n";
 });
 
 $server->on("request", function (Request $request, Response $response) {
