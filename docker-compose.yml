@@ -8,16 +8,11 @@ services:
     container_name: ${DOCKER_APP}-php
     volumes:
       - './:/var/www/html'
-    expose:
-      - 80
+    ports:
+      - 9503:9503
     networks:
-      my-new-app-network:
-        ipv4_address: ${DOCKER_APP_IP}.0.2
+      - my-new-app-network
 
 networks:
   my-new-app-network:
     driver: bridge
-    ipam:
-      config:
-        - subnet: ${DOCKER_APP_IP}.0.0/16
-          gateway: ${DOCKER_APP_IP}.0.1
